@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weepay | sample - Get Payment</title>
+</head>
+
+<body>
+    <script src="../weepay.js"></script>
+    <script>
+        var weepay = new weepayInit();
+
+        weepay.configure({
+            bayiId: "bayiId",
+            apiKey: "apiKey",
+            secretKey: "secretKey",
+            baseUrl: "https://api.weepay.co"
+        })
+
+        var request = {
+            orderId: 1, // or paymentId
+            locale: Constants.Locale.TR,
+        }
+
+        weepay.getPayment(request, function (response) {
+            if (response.status == "failure") {
+                console.log(response);
+            } else {
+                console.log(response.data);
+            }
+        });
+    </script>
+</body>
+
+</html>

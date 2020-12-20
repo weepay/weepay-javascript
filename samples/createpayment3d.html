@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weepay | sample - Create Payment3d</title>
+</head>
+
+<body>
+    <script src="../weepay.js"></script>
+    <script>
+        var weepay = new weepayInit();
+
+        weepay.configure({
+            bayiId: "bayi-id",
+            apiKey: "apiKey",
+            secretKey: "secretKey",
+            baseUrl: "https://api.weepay.co"
+        })
+
+        var request = {
+            data: {
+                orderId: 1,
+                ipAddress: "192.168.2.1",
+                paidPrice: 0.10,
+                currency: Constants.Currency.TL,
+                locale: Constants.Locale.TR,
+                description: "Açıklama Alanı",
+                cardHolderName: "isim soyisim",
+                cardNumber: "555555555555555",
+                expireMonth: "01",
+                expireYear: "22",
+                cvcNumber: "233",
+                callBackUrl: "https://websitem.com/callback",
+                installmentNumber: 1,
+                paymentGroup: Constants.PaymentGroup.PRODUCT,
+                paymentChannel: Constants.PaymentChannel.WEB
+            },
+            customer: {
+                customerId: 1234,
+                customerName: "isim",
+                customerSurname: "soyisim",
+                gsmNumber: "50XXXXXX",
+                email: "helo@weepay.co",
+                identityNumber: "00032222721",
+                city: "istanbul",
+                country: "turkey"
+            },
+            billingAddress: {
+                contactName: "isim soyisim",
+                address: "Abdurrahman Nafiz Gürman,Mh, G. Ali Rıza Gürcan Cd. No:27",
+                city: "istanbul",
+                country: "turkey",
+                zipCode: "34164"
+            },
+            shippingAddress: {
+                contactName: "isim soyisim",
+                address: "Abdurrahman Nafiz Gürman,Mh, G. Ali Rıza Gürcan Cd. No:27",
+                city: "istanbul",
+                country: "turkey",
+                zipCode: "34164"
+            },
+            products: [
+                {
+                    name: "first product",
+                    productPrice: "30.00",
+                    itemType: Constants.ProductType.PHYSICAL,
+                    productId: "1234"
+                },
+                {
+                    name: "first product",
+                    productPrice: "30.00",
+                    itemType: Constants.ProductType.PHYSICAL,
+                    productId: "1234"
+                },
+            ]
+        }
+
+        weepay.createPayment3d(request, function (response) {
+            if (response.status == "failure") {
+                console.log(response.message);
+            } else {
+                console.log(response.threeDSecureUrl)
+                window.location.href = response.threeDSecureUrl;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
