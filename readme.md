@@ -106,9 +106,9 @@ weepay.configure({
 <div id="weePay-checkout-form" class="responsive">
 ```
 
-- You can see further examples in samples folder
-
 ### Samples
+
+- You can see further examples in samples folder
 
 
 
