@@ -100,7 +100,8 @@ weepay.configure({
             }
         });
 ```
-if you want to use the checkout form; weepay div is required
+### Requirements
+- if you want to use the checkout form; weepay div is required
 ```HTML
 <div id="weePay-checkout-form" class="responsive">
 ```
