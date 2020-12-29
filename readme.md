@@ -9,11 +9,11 @@ import weepay javascript library weepay.js or weepay.min.js file
 
 ### Usage
 To write an app using the SDK
-- Add dependency 'weepay-nodejs' in your package.json file. 
-- Require 'weepay-nodejs' in your file
+- Add dependency 'weepay.js' in your html file. 
 
-```javascript
-const  weepay = require('weepay-nodejs');
+
+```html
+<script src="/weepay.min.js"></script>
 ```
 
 - Create config options, with parameters (bayiId, apiKey, secretKey).
